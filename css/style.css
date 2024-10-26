@@ -1,0 +1,550 @@
+/*---------すべてのページに適用される設定---------*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;/*要素全体のサイズが指定した幅と高さに収まるようになる*/
+}
+html{
+  font-size: 16px;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+p, li, td{
+  list-style: none;
+  line-height: 1.7;
+}
+img{
+  max-width: 100%;
+  vertical-align: bottom; /*要素の下端が親要素の下端に揃えられる*/
+}
+
+/*---------すべてのページに適用 - ヘッダー---------*/
+/*============ nav =============*/
+#navArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e4ddd5;
+  text-align: center;
+  transition: all 1.0s ease; /* アニメーション効果を追加 */
+}
+#navArea nav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  bottom: 0;
+  width: 300px;
+  background: #e4ddd5;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: .5s;
+  z-index: 6;
+}
+#navArea.open nav {
+  left: 0;
+}
+nav .inner {
+  padding: 25px;
+}
+nav .inner ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav .inner ul li {
+  position: relative;
+  margin: 0;
+  border-bottom: 1px solid #7e928d;
+}
+nav .inner ul li a {
+  display: block;
+  padding: 1em;
+  color: #7e928d;
+  font-size: 14px;
+  font-weight: 580;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+nav .inner ul li a:hover {
+  background: #f5f0eb;
+}
+/*============ @keyframes =============*/
+@keyframes equalizer01 {
+  0% {
+    width: 70%;
+  }
+  10% {
+    width: 50%;
+  }
+  20% {
+    width: 100%;
+  }
+  30% {
+    width: 10%;
+  }
+  40% {
+    width: 50%;
+  }
+  50% {
+    width: 70%;
+  }
+  60% {
+    width: 50%;
+  }
+  70% {
+    width: 10%;
+  }
+  80% {
+    width: 100%;
+  }
+  90% {
+    width: 10%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+@keyframes equalizer02 {
+  0% {
+    width: 30%;
+  }
+  10% {
+    width: 20%;
+  }
+  20% {
+    width: 40%;
+  }
+  30% {
+    width: 10%;
+  }
+  40% {
+    width: 20%;
+  }
+  50% {
+    width: 30%;
+  }
+  60% {
+    width: 20%;
+  }
+  70% {
+    width: 10%;
+  }
+  80% {
+    width: 40%;
+  }
+  90% {
+    width: 10%;
+  }
+  100% {
+    width: 30%;
+  }
+}
+/*============ .toggle_btn =============*/
+.toggle_btn {
+  display: block;
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  width: 60px;
+  height: 30px;
+  transform: translate(0, 0);
+  transition: all .5s;
+  cursor: pointer;
+  z-index: 3;
+}
+.open .toggle_btn {
+  left: 330px;
+}
+.toggle_btn span {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #7e928d;
+  transition: all .5s;
+}
+.toggle_btn span:nth-child(1) {
+  top: 5px;
+  width: 60px;
+  animation: equalizer01 7000ms infinite;
+}
+.toggle_btn span:nth-child(2) {
+  top: 15px;
+  width: 30px;
+  animation: equalizer02 5000ms infinite;
+  animation-delay: 0.33s;
+}
+.toggle_btn span:nth-child(3) {
+  top: 25px;
+  width: 20px;
+  animation: equalizer02 5000ms infinite;
+}
+.open .toggle_btn span {
+  background-color: #e4ddd5;
+  width: 30px;
+}
+.open .toggle_btn span:nth-child(1) {
+  transform: translate(0, 10px) rotate(-45deg);
+  animation: unset; 
+}
+.open .toggle_btn span:nth-child(2) {
+  opacity: 0;
+  animation: unset;
+}
+.open .toggle_btn span:nth-child(3) {
+  transform: translate(0, -10px) rotate(45deg);
+  animation: unset;
+}
+  
+/*============ #mask =============*/
+#mask {
+  display: none;
+}
+.open #mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .8;
+  z-index: 2;
+  cursor: pointer;
+  transition: all .5s;
+}
+/*============ main =============*/
+.main1 {
+  width: 100%; 
+  margin: 0;
+  padding: 50px;
+}
+h1{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  color: #7e928d;
+  font-family: 'Gill Sans' , sans-serif; 
+  text-align: center; 
+}
+
+/* すべてのページに適用 - ヒーロー */
+.hero{
+  padding: 137px 0;
+  background-position: center;
+  background-size: cover;
+}
+.hero.gift{
+  background-image: url(../images/gift-hero.jpg);
+}
+.hero.contact{
+  background-image: url(../images/contact-hero.jpg);
+}
+.hero.service{
+  background-image: url(../images/service-hero.jpg);
+}
+
+/*------------ヘッダー画像------------*/
+#slider {
+  margin-bottom: 120px; 
+}
+#slider img {
+  width: 100%;
+  height: calc(100vh - 80px); /*要素の高さを計算する方法*/
+  object-fit: cover; /*縦横比を保ちながら中央部分が表示される*/
+}
+
+/*------------すべてのページに適用 - メイン------------*/
+main{
+  max-width: 1000px;
+  margin: 24px auto 24px auto;
+}
+main h2{
+  margin: 60px 0 20px 0;
+  border-bottom: 2px solid #c19a88;
+  padding: 0 0 5px 0;
+  color: #c19a88;
+}
+
+/*------------すべてのページに適用 - フッター ------------ */
+.gotop{
+  text-align: center;
+}
+.gotop a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background-color: #b1cdbb;
+  border-radius: 50vh;
+  transition: 0.3s;
+} 
+.gotop a::after {
+  content: '';
+  transform: rotate(45deg);/*要素をその中心点を基準に45度回転させる*/
+  width: 7px;
+  height: 7px;
+  border-top: 3px solid #c19a88;
+  border-left: 3px solid #c19a88;
+  transition: 0.3s;
+}  
+.gotop span {
+  visibility: hidden; /*要素を隠すためのCSSプロパティ*/
+  width: 0px;
+  height: 0px;
+} 
+.gotop a:hover {
+  background-color: #c19a88;
+} 
+.gotop a:hover::after {
+  transform: translateY(-5px) rotate(45deg); /*translateYは、垂直方向（Y軸）に-5ピクセル（上方向）移動*/
+  border-top: 3px solid #b1cdbb;
+  border-left: 3px solid #b1cdbb;
+} 
+body{
+  text-align: center;
+  vertical-align: middle; 
+}
+.copyright{
+  margin: 20px 0 0 0;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  background-color: #e4ddd5;
+  color: #7e928d;
+  text-align: center;
+}
+
+/* ------------ index.html ------------*/
+/*------------お知らせ------------*/
+#news {
+  height: 335px;
+}
+#news-container{
+  display:none;
+}
+.news-list{
+  list-style: none outside;
+  margin: 0;
+  padding: 0;
+}
+.news-list .item a{
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 20px 20px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #d7dcd8;
+}
+/*.news-list .item:first-child a{
+  border-top: 1px solid #d7dcd8;
+}*/
+
+.news-list .item .date{
+  min-width: 120px;
+  margin: 0;
+  padding: 0 20px 0 0;
+  color: #333;
+  font-size: 16px; 
+}
+.news-list .item .title{
+  margin: 0;
+  width: 100%;
+  text-align: left; 
+}
+.news-list .item a:hover .title{
+  color: #333;
+}
+
+/*------------店舗情報------------*/
+#shop{
+  height: 650px;
+}
+#shop-container{
+  display:none;
+}
+.shop-info{
+  border-collapse: collapse;
+}
+.shop-info th, .shop-info td{
+  border: 1px solid #d7dcd8;
+  padding: 20px;
+  text-align: left;
+}
+.shop-info th{
+  width: 156px;
+  text-align: left;
+  vertical-align: top;
+}
+.shop-info a {
+  color: #f8b8bc; 
+  text-decoration: none; 
+}
+
+/*------------service.html 定期便------------*/
+.service h3{
+  margin-bottom: 24px;
+  color: #7e928d;
+}
+.service img {
+  width: 120px; 
+  height: auto; 
+  margin: 30px 0;
+}
+.example {
+  display: flex;
+  flex-wrap: wrap; /* 画像を折り返す */
+  justify-content: space-between;
+}
+.example img {
+  width: 170px; 
+  margin-right: 0 10px 10px 0; 
+}
+
+/*------------gift.html ギフト------------*/
+.items{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /*グリッド内に3つの列を作成*/
+  gap: 20px;
+}
+    
+/*------------contact.html お問い合わせ------------*/
+.sec-title{
+  margin-bottom: 65px;
+  font-size: 1.5rem;
+  text-align: left;
+}
+#contact dl{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 60px 0 20px 0;
+}
+#contact dt{
+  width: 15%;
+}
+#contact dd{
+  width: 75%;
+  margin-bottom: 10px;
+}
+#contact dd input, #contact dd textarea{
+  width: 100%;
+  padding: 10px;
+}
+#contact dd textarea{
+  height: 10rem;
+}
+#contact .button{
+  text-align: center; 
+}
+#contact .button input{
+  width: 200px;
+  margin-bottom: 40px;
+  padding: 15px 0;
+  background-color: #c19a88;
+  color: #b1cdbb;
+  font-size: 1.2rem; 
+  font-weight: bold;
+  border: none;
+  outline: none; /* フォーカス時の枠線を消す */  
+}
+#contact .button input:hover{
+  background-color: #b1cdbb;
+  color: #c19a88;
+}
+
+
+/*------------モバイル対応------------*/
+@media (max-width: 767px){
+  *{
+    margin: 0;
+    padding: 0;
+  }*
+  /*------------ヘッダー------------*/
+  nav {
+    left: -200px;
+    width: 200px;
+  }
+  #navArea nav{
+    width: 170px;
+  }
+  main{
+    padding: 0 4%;
+  }
+  .open .toggle_btn {
+    left: 200px;
+  }
+  /*------------index.html ホーム------------*/
+  .hero.index{
+    padding: 28vh 0;
+  }
+  #news {
+    height: auto; 
+  }
+  #news-container {
+    display: block;
+  }
+  .news-list .item a {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+
+  #shop {
+    height:auto; 
+  }
+  #shop-container {
+    display: block;
+  }
+  .shop-info th, .shop-info td {
+    display: block; /* テーブルセルをブロック表示 */
+    width: 100%; 
+  }
+  /*------------service.html 定期便------------*/
+  .example {
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: center; /* 中央揃え */
+  }
+  .example img {
+    width: 100%; /* 画像を幅いっぱいに広げる */
+    margin: 10px 0; /* 上下に余白を設定、左右の余白は0 */
+  }
+  /*------------gift.html ギフト------------*/
+  .items{
+    grid-template-columns: 1fr 1fr;
+  }
+  .news-list .item a{
+    flex-wrap: wrap;
+  }
+  .news-list .item .date{
+    min-width: 100px;
+  }
+  .news-list .item .title{
+    margin-top: 10px;
+  }  
+  /*------------contact.html お問い合わせ------------*/
+  #contact dl {
+    display: block;
+    margin: 60px 0 20px 0;
+  }
+  #contact dt, #contact dd {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #contact dd input, #contact dd textarea {
+    width: 100%;
+    padding: 10px;
+  }
+  #contact .button input{
+    width: 140px;
+    margin-bottom: 0;
+    padding: 10px 0;
+  }
+}
